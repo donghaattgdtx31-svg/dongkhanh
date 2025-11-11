@@ -3,16 +3,13 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 65px;
-  padding: 0 40px; /* Khoảng cách 2 bên */
+  padding: 0 20px;
+  height: 60px;
   background: #1a1a1a;
   color: #fff;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
-  position: fixed; /* dính trên cùng */
-  top: 0;
-  left: 0;
-  right: 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  position: relative;
   z-index: 1000;
 }
 
@@ -20,13 +17,13 @@
 .logo-container {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 12px; /* khoảng cách giữa logo và chữ */
   flex-shrink: 0;
 }
 
 .logo {
-  width: 48px;
-  height: 48px;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
   object-fit: cover;
 }
@@ -37,61 +34,63 @@
   color: #f0c040;
 }
 
-/* Menu / Nav-center — chỉ chỉnh phần này */
-.nav-center {
-  display: flex;
-  align-items: center;
-  gap: 25px;
+/* Scrollable menu + user */
+.nav-center-wrapper {
+  overflow-x: hidden;
   flex-grow: 1;
-  justify-content: flex-start; /* ✅ kéo các nút sang trái */
-  margin-left: 60px; /* ✅ khoảng cách với logo */
-  /* margin-right giữ nguyên khoảng cách với bên phải */
+  margin-left: 30px;
+  margin-right: 30px;
+  display: flex;
+  align-items: center; /* căn giữa theo chiều dọc với logo */
+  transition: all 0.3s;
+}
+
+.nav-center-wrapper:hover {
+  overflow-x: auto;
 }
 
 /* Menu */
-.menu {
+.nav-center {
   display: flex;
-  align-items: center;
-  gap: 25px;
+  gap: 20px;
   list-style: none;
-  margin: 0;
   padding: 0;
+  margin: 0;
+  white-space: nowrap;
+  align-items: center; /* căn menu + avatar cùng chiều cao */
 }
 
-.menu li a {
+.nav-center li a {
   text-decoration: none;
   color: #fff;
   font-weight: 500;
-  transition: color 0.25s ease;
-  font-size: 1rem;
+  transition: color 0.2s;
 }
 
-.menu li a:hover {
+.nav-center li a:hover {
   color: #f0c040;
-}
-
-/* User / Avatar */
-.user-menu-container {
-  display: flex;
-  align-items: center;
-  gap: 15px;
 }
 
 /* Cart link */
 .cart-link {
   font-weight: 600;
   color: #fff;
-  text-decoration: none;
-  transition: color 0.2s;
 }
-
 .cart-link:hover {
   color: #f0c040;
 }
 
+/* User / Avatar */
+.user-menu-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
 .user-avatar {
-  width: 40px;
-  height: 40px;
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
   cursor: pointer;
   border: 2px solid #f0c040;
@@ -99,41 +98,68 @@
 }
 
 .user-avatar:hover {
-  transform: scale(1.07);
+  transform: scale(1.05);
 }
 
 /* Dropdown profile */
 .user-dropdown {
   position: absolute;
-  top: 60px;
+  top: 50px;
   right: 0;
   background: #222;
   border: 1px solid #f0c040;
   border-radius: 8px;
-  padding: 10px;
-  min-width: 200px;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.6);
+  padding: 12px;
+  min-width: 220px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.5);
   z-index: 1200;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 10px;
+}
+
+.user-dropdown p {
+  margin: 0;
+  color: #fff;
+  font-size: 0.95rem;
+  word-break: break-word;
+}
+
+/* Buttons */
+.logout-button,
+.login-link {
+  padding: 6px 14px;
+  border-radius: 6px;
+  background: #f0c040;
+  border: 1px solid #f0c040;
+  color: #1a1a1a;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+
+.logout-button:hover,
+.login-link:hover {
+  background: #ffc94d;
+  border-color: #ffc94d;
+  transform: translateY(-2px);
 }
 
 /* Responsive */
 @media (max-width: 768px) {
-  .nav-center {
+  .nav-center-wrapper {
     margin-left: 10px;
     margin-right: 10px;
-    justify-content: flex-start;
-    flex-wrap: wrap;
   }
 
-  .menu {
+  .nav-center {
     gap: 10px;
   }
 
   .logo-text {
-    display: none;
+    display: none; /* ẩn chữ logo khi màn hình nhỏ */
   }
 
   .user-menu-container {
