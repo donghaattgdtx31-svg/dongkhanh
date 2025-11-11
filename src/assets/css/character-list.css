@@ -1,0 +1,48 @@
+:root {
+  --bg-overlay: rgba(0, 0, 0, 0.55);
+}
+.char-page {
+  position: relative;
+  min-height: calc(100vh - 120px);
+  color: white;
+  padding-bottom: 60px;
+}
+
+/* background image full, miyoho style */
+.char-bg {
+  position: fixed;
+  inset: 0;
+  background-image: url("https://i.imgur.com/0X2Yc3y.jpg"); /* thay bằng bg miyoho bạn thích */
+  background-size: cover;
+  background-position: center;
+  filter: blur(2px) brightness(0.45);
+  z-index: 0;
+}
+
+.char-content {
+  position: relative;
+  z-index: 2;
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* grid */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 18px;
+}
+
+/* card hover */
+.char-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+}
+
+/* small responsive */
+@media (max-width: 600px) {
+  .grid {
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  }
+}
